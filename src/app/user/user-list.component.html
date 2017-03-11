@@ -1,0 +1,19 @@
+<h2>Users List</h2>
+<md-grid-list cols="3" rowHeight="40px">
+  <md-grid-tile ><md-grid-tile-header>Id</md-grid-tile-header></md-grid-tile>
+  <md-grid-tile ><md-grid-tile-header>Name</md-grid-tile-header> </md-grid-tile>
+  <md-grid-tile ><md-grid-tile-header></md-grid-tile-header> </md-grid-tile>
+</md-grid-list>
+<md-grid-list cols="3" rowHeight="40px" *ngFor="let user of users" [class.selected]="user === selectedUser" (click)="onSelect(user)"> 
+    <md-grid-tile>{{user.id}}</md-grid-tile>
+    <md-grid-tile>{{user.name}}</md-grid-tile>
+    <md-grid-tile>Edit Delete</md-grid-tile>
+</md-grid-list>
+<div *ngIf="selectedUser">
+  <h2>{{selectedUser.name}} details!</h2>
+  <div><label>id: </label>{{selectedUser.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="selectedUser.name" placeholder="name"/>
+  </div>
+</div>
