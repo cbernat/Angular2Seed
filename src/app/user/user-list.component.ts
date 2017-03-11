@@ -21,10 +21,6 @@ getUsers(): void {
   }
 
 users : User[];
-selectedUser : User;
-onSelect(user: User): void {
-  this.selectedUser = user;
-}
 
 
 
