@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 import { MaterialModule } from '@angular/material';
@@ -11,6 +11,8 @@ import { UserDetailComponent }  from './user/user-detail.component';
 import { HeaderComponent }  from './header.component';
 import { UserService }         from './user/user.service';
 import { FooterComponent } from './footer.component'; 
+
+import { AppRoutingModule }     from './app-routing.module';
 
 
 @NgModule({
@@ -24,18 +26,10 @@ import { FooterComponent } from './footer.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     MaterialModule,
-    RouterModule.forRoot([
-      {
-        path: 'users',
-        component: UserListComponent
-      },
-      {
-        path: 'users/:id',
-        component: UserDetailComponent
-      },
-    ])
+    AppRoutingModule
   ],
   providers: [
     UserService

@@ -3,8 +3,56 @@
     <div>
     <label>id: </label>{{user.id}}
     </div>
-    <div>
+    <!--<div>
     <label>name: </label>
     <input [(ngModel)]="user.name" placeholder="name"/>
-    </div>
+    </div> -->
+    <form [formGroup]="userForm" novalidate >
+        <div class="form-group">
+            <label class="center-block">Name:
+            <input class="form-control" formControlName="name">
+            </label>
+        </div>
+        <div formGroupName="address" class="well well-lg">
+            <h4>Address:</h4>
+            <div class="form-group">
+                <label class="center-block">Street:
+                <input class="form-control" formControlName="street">
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="center-block">City:
+                <input class="form-control" formControlName="city">
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="center-block">State:
+                <select class="form-control" formControlName="state">
+                    <option *ngFor="let state of states" [value]="state">{{state}}</option>
+                </select>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="center-block">Zip Code:
+                <input class="form-control" formControlName="zip">
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group radio">
+            <h4>Gender</h4>
+            <label class="center-block"><input type="radio" formControlName="gender" value="female">Female</label>
+            <label class="center-block"><input type="radio" formControlName="gender" value="male">Male</label>
+            <label class="center-block"><input type="radio" formControlName="gender" value="none">None</label>
+        </div>
+        <div class="checkbox">
+            <label class="center-block">
+            <input type="checkbox" formControlName="new">Is New User
+            </label>
+        </div>
+    </form>
+    <p>Form value: {{ userForm.value | json }}</p>
+<p>Form status: {{ userForm.status | json }}</p>
+    <button (click)="goBack()">Back</button>
+    
 </div>
