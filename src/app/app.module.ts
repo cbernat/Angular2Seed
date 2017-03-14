@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
-import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { UserListComponent }  from './user/user-list.component';
@@ -28,7 +27,6 @@ import { AppRoutingModule }     from './app-routing.module';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    MaterialModule,
     AppRoutingModule
   ],
   providers: [

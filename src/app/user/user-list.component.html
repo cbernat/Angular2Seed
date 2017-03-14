@@ -1,11 +1,20 @@
-<h2>Users List</h2>
-<md-grid-list cols="3" rowHeight="40px">
-  <md-grid-tile ><md-grid-tile-header>Id</md-grid-tile-header></md-grid-tile>
-  <md-grid-tile ><md-grid-tile-header>Name</md-grid-tile-header> </md-grid-tile>
-  <md-grid-tile ><md-grid-tile-header></md-grid-tile-header> </md-grid-tile>
-</md-grid-list>
-<md-grid-list cols="3" rowHeight="40px" *ngFor="let user of users"  > 
-    <md-grid-tile>{{user.id}}</md-grid-tile>
-    <md-grid-tile>{{user.name}}</md-grid-tile>
-    <md-grid-tile><a routerLink="/users/{{user.id}}"><i class="material-icons">mode edit</i></a> <a><i class="material-icons">delete</i></a> </md-grid-tile>
-</md-grid-list>
+
+
+  <h2>Users List</h2>
+<table >
+  <thead> 
+      <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td class="actions"></td>
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td><a routerLink="/users/{{user.id}}">Edit</a> <a>Remove</a></td>
+    </tr>
+  </tbody>
+</table>
+
