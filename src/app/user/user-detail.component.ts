@@ -37,13 +37,19 @@ export class UserDetailComponent implements OnInit {
       gender: '',
       new: ''
     });
+    this.userForm.patchValue({
+        // name: this.user.name --> esto da undefined en el name
+        name: "Nombre por codigo"
+    });
+
   }
-   
+
 
   ngOnInit(): void {
     this.route.params
       .switchMap((params: Params) => this.userService.getUser(+params['id']))
       .subscribe(user => this.user = user);
+      
   }
   goBack(): void {
     this.location.back();
