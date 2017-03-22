@@ -1,0 +1,39 @@
+form, div.model-value--container{
+    width: 49%;
+    display: inline-block;
+}
+div.form-group, div.checkbox{
+    margin: 10px 0px;
+}
+div.form-group input{
+    padding: 5px;
+}
+code {
+        font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+        font-size: 95%;
+        line-height: 140%;
+        white-space: pre;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -o-pre-wrap;
+        background: lightgray;;
+    }
+div.code-frame{
+    border: 1px solid #000;
+    width: 60%;
+    padding: 10px;
+    background-color: lightgray;
+}
+p.valid{
+    color: green;
+    font-weight: bold;
+}
+p.error{
+    color:red;
+    font-weight: bold;
+}
+button{
+    margin: 20px 0;
+    height: 40px;
+    padding: 10px;
+}

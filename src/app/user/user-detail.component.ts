@@ -9,7 +9,8 @@ import { User } from './user';
 import { Address } from './user';
 @Component({
   selector: 'user-detail',
-  templateUrl: './user-detail.component.html'
+  templateUrl: './user-detail.component.html',
+  styleUrls:  ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
   @Input() user: User;
@@ -47,7 +48,9 @@ export class UserDetailComponent implements OnInit {
       .switchMap((params: Params) => this.userService.getUser(+params['id']))
       .subscribe(user => {this.user = user;
       this.userForm.patchValue({
-        name: this.user.name
+        name: this.user.name,
+        address: this.user.addresses[0]
+
     });
   });
       

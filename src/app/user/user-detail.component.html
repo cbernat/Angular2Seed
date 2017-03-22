@@ -34,9 +34,8 @@
                 </label>
             </div>
         </div>
-
+        <h4>Gender</h4>
         <div class="form-group radio">
-            <h4>Gender</h4>
             <label class="center-block"><input type="radio" formControlName="gender" value="female">Female</label>
             <label class="center-block"><input type="radio" formControlName="gender" value="male">Male</label>
             <label class="center-block"><input type="radio" formControlName="gender" value="none">None</label>
@@ -47,8 +46,14 @@
             </label>
         </div>
     </form>
-    <p>Form value: {{ userForm.value | json }}</p>
-<p>Form status: {{ userForm.status | json }}</p>
+    <div class="model-value--container">
+        <h4>Form value:</h4>
+        <div class="code-frame">
+            <code> {{ userForm.value | json }}</code>
+        </div>
+        <h4>Form status:</h4>
+        <p [ngClass]="{'valid': userForm.status == 'VALID','error': userForm.status == 'INVALID' }">{{ userForm.status | json }}</p>
+    </div>
     <button (click)="goBack()">Back</button>
     
 </div>
