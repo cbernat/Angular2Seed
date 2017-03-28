@@ -11,4 +11,8 @@ export class UserService {
         return this.getUsers()
                 .then(Users => Users.find(user => user.id === id));
     }
+    addUser(user: User):Promise<number> {
+        USERS.push(user);
+        return Promise.resolve(user.id);
+    }
 }

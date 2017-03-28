@@ -1,8 +1,9 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
+import { ActivatedRoute,Router, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import { FormControl, FormGroup ,FormBuilder,Validators  }            from '@angular/forms';
+
 
 import { UserService } from './user.service';
 import { User } from './user';
@@ -10,10 +11,10 @@ import { Address } from './user';
 @Component({
   selector: 'user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls:  ['./user-detail.component.css']
+  styleUrls:  ['./user-detail.component.scss']
 })
 export class UserDetailComponent implements OnInit {
-  @Input() user: User;
+ /* @Input() */user: User;
   userForm:FormGroup;
 
   isDarkTheme: boolean = false;
@@ -24,17 +25,18 @@ export class UserDetailComponent implements OnInit {
   constructor(
   private userService: UserService,
   private route: ActivatedRoute,
+  private router: Router,
   private location: Location,
-  private fb: FormBuilder
+  private formBuilder: FormBuilder //formBuilder en vez de formBuilder
   ) {
     this.createForm();
   }
 
 
    createForm() {
-    this.userForm = this.fb.group({
-      name: ['', Validators.required ],
-      address: this.fb.group(new Address()),
+    this.userForm = this.formBuilder.group({
+      name: ['', Validators.required ],// name: new formControl('', Validators.required); Validators.compose 
+      address: this.formBuilder.group(new Address()),
       gender: '',
       new: ''
     });
@@ -52,18 +54,23 @@ export class UserDetailComponent implements OnInit {
         address: this.user.addresses[0]
 
     });
+    
+    //this.userForm.controls.name.patchValue("ddddd"); 
   });
-      
   }
   goBack(): void {
-    this.location.back();
+    this.router.navigate(["/users"]); //this.router.navigate(["/users", user.id]);
+  }
+
+  saveUser(): void{
+    this.userService.addUser(this.user);
   }
 
    ngOnChanges(){
      console.log("changed");
-     this.userForm.reset({
-    name: this.user.name,
-    address: this.user.addresses[0] || new Address()
+     this.userForm.reset({ //use this when cancelling edition
+      name: this.user.name,
+      address: this.user.addresses[0] || new Address()
   });
     this.userForm.setValue({
       name:    this.user.name,
