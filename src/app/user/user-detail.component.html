@@ -3,7 +3,7 @@
     <div>
     <label>id: </label>{{user.id}}
     </div>
-    <form [formGroup]="userForm" novalidate >
+    <form [formGroup]="userForm" novalidate (ngSubmit)="saveUser(userForm.value)" >
         <div class="form-group">
             <label class="center-block">*Name:
             <input class="form-control" formControlName="name">
@@ -45,6 +45,7 @@
             <input type="checkbox" formControlName="new">Is New User
             </label>
         </div>
+         <button type="submit">Add User</button>
     </form>
     <div class="model-value--container">
         <h4>Form value:</h4>
@@ -55,5 +56,6 @@
         <p [ngClass]="{'valid': userForm.status == 'VALID','error': userForm.status == 'INVALID' }">{{ userForm.status | json }}</p>
     </div>
     <button (click)="goBack()">Back</button>
+
     
 </div>
