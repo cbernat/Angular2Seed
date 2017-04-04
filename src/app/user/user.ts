@@ -26,6 +26,22 @@ export class Address {
   city   = '';
   state  = '';
   zip    = '';
+  /*toJson(): any{
+    let userJson = {
+      street: this.street,
+      city: this.city,
+      zip: this.zip
+    };
+
+    return userJson;
+  }
+
+  static fromJson(json): User {
+    let user = Object.create(User.prototype);
+    return Object.assign(user, json, {
+      
+    });
+  }*/
 }
 
 
