@@ -2,7 +2,13 @@ export class User {
    id: number;
    name: string;
    addresses: Address[];
-  /*toJson(): any{
+
+   constructor(id: number, name: string, addresses: Address[]) {
+        this.id = id;
+        this.name = name;
+        this.addresses = addresses;
+    }
+  toJson(): any{
     let userJson = {
       id: this.id,
       name: this.name,
@@ -17,31 +23,37 @@ export class User {
     return Object.assign(user, json, {
       id: json._id,
       name: json._name,
-      addresses: json._addresses
+      addresses: Address.fromJson(json._addresses)
     });
-  }*/
+  }
 }
 export class Address {
   street = '';
   city   = '';
   state  = '';
   zip    = '';
-  /*toJson(): any{
-    let userJson = {
+  constructor(street: string, city: string, state: string, zip:string) {
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+    }
+  toJson(): any{
+    let addressJson = {
       street: this.street,
       city: this.city,
       zip: this.zip
     };
 
-    return userJson;
+    return addressJson;
   }
 
-  static fromJson(json): User {
-    let user = Object.create(User.prototype);
-    return Object.assign(user, json, {
+  static fromJson(json): Address {
+    let address = Object.create(Address.prototype);
+    return Object.assign(address, json, {
       
     });
-  }*/
+  }
 }
 
 
